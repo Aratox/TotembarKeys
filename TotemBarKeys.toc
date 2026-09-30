@@ -1,0 +1,10 @@
+## Interface: 16001
+## Title: Totem Bar Keys
+## Notes: Key bindings for Blizzard's totem bar: open a slot's selection and pick a totem with the number keys, drop the totem of each slot.
+## Notes-deDE: Tastenbelegung für Blizzards Totemleiste: Auswahl eines Platzes öffnen und das Totem mit den Zifferntasten wählen, das Totem jedes Platzes stellen.
+## Author: Christian
+## Version: 1.0.0
+## IconTexture: Interface/AddOns/TotemBarKeys/icon
+## DefaultState: enabled
+
+TotemBarKeys.lua
