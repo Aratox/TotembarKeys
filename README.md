@@ -18,7 +18,8 @@ normal bindings for 1–9 are untouched the rest of the time, and also when you
 open the selection with the mouse. While the selection is open, each entry
 shows the number that picks it.
 
-Selecting and dropping both work in combat.
+Selecting and dropping both work in combat. A totem you pick in combat is used
+right away: the slot's drop key drops the newly selected totem.
 
 ## Install
 
