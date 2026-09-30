@@ -3,11 +3,8 @@
 	<Binding name="CLICK TotemBarKeysButton:open2" category="Totem Bar Keys"></Binding>
 	<Binding name="CLICK TotemBarKeysButton:open3" category="Totem Bar Keys"></Binding>
 	<Binding name="CLICK TotemBarKeysButton:open4" category="Totem Bar Keys"></Binding>
-	<Binding name="CLICK TotemBarKeysButton:open5" category="Totem Bar Keys"></Binding>
 	<Binding name="CLICK TotemBarKeysCast1:LeftButton" category="Totem Bar Keys"></Binding>
 	<Binding name="CLICK TotemBarKeysCast2:LeftButton" category="Totem Bar Keys"></Binding>
 	<Binding name="CLICK TotemBarKeysCast3:LeftButton" category="Totem Bar Keys"></Binding>
 	<Binding name="CLICK TotemBarKeysCast4:LeftButton" category="Totem Bar Keys"></Binding>
-	<Binding name="CLICK MultiCastSummonSpellButton:LeftButton" category="Totem Bar Keys"></Binding>
-	<Binding name="CLICK MultiCastRecallSpellButton:LeftButton" category="Totem Bar Keys"></Binding>
 </Bindings>

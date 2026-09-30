@@ -1,11 +1,10 @@
 -- TotemBarKeys: key bindings for Blizzard's totem bar.
 --
--- Select: a key opens the selection flyout of a slot or of the call spells.
+-- Select: a key opens the selection flyout of a slot.
 --         While it was opened by key, the number keys 1-9 pick the entry (like
 --         clicking it: the totem is assigned to the slot, not dropped) and
 --         ESC closes it.
--- Drop:   one key per slot drops the totem assigned to it, plus one key each
---         for the call spell (drop all) and Totemic Recall.
+-- Drop:   one key per slot drops the totem assigned to it.
 --
 -- The number keys are redirected with override bindings. In combat those can
 -- only be set from secure code, so these keys run through a SecureHandler
@@ -22,7 +21,6 @@ local BUTTON_NAME = "TotemBarKeysButton"
 local CAST_NAME   = "TotemBarKeysCast"
 local NUM_SLOTS   = 4
 local NUM_KEYS    = 9
-local PAGE        = 5   -- open5: the Call of the Elements / Ancestors / Spirits selection
 
 local InCombatLockdown = InCombatLockdown
 local GetActionInfo    = GetActionInfo
@@ -33,9 +31,6 @@ for pos = 1, NUM_SLOTS do
 	_G["BINDING_NAME_CLICK " .. BUTTON_NAME .. ":open" .. pos] = ("Slot %d: open totem selection"):format(pos)
 	_G["BINDING_NAME_CLICK " .. CAST_NAME .. pos .. ":LeftButton"] = ("Slot %d: drop totem"):format(pos)
 end
-_G["BINDING_NAME_CLICK " .. BUTTON_NAME .. ":open" .. PAGE] = "Open call spell selection"
-_G["BINDING_NAME_CLICK MultiCastSummonSpellButton:LeftButton"] = "Drop all totems (call spell)"
-_G["BINDING_NAME_CLICK MultiCastRecallSpellButton:LeftButton"] = "Recall totems"
 
 --------------------------------------------------------------------------------
 -- Drop: one secure action button per position on the bar
@@ -150,24 +145,23 @@ end
 
 local function OpenFlyout(n)
 	local flyout = Flyout()
-	local parent = (n == PAGE) and _G.MultiCastSummonSpellButton or _G["MultiCastSlotButton" .. n]
+	local parent = _G["MultiCastSlotButton" .. n]
 	local active = bar.numActiveSlots
 	if issecretvalue(active) then active = nil end
-	if not flyout or not parent or not bar:IsShown() or (n ~= PAGE and active and n > active) then
+	if not flyout or not parent or not bar:IsShown() or (active and n > active) then
 		return ReleaseKeys()
 	end
 	if flyout:IsShown() and flyout.parent == parent then
 		return ShowLabels()
 	end
-	local kind = (n == PAGE) and "page" or "slot"
 	switching = true
 	if MultiCastFlyoutFrame_ToggleFlyout then
-		MultiCastFlyoutFrame_ToggleFlyout(flyout, kind, parent)
+		MultiCastFlyoutFrame_ToggleFlyout(flyout, "slot", parent)
 	else
 		-- same path as hovering the button and clicking the arrow above it
 		local arrow = _G.MultiCastFlyoutFrameOpenButton
 		if arrow and MultiCastFlyoutFrameOpenButton_Show then
-			MultiCastFlyoutFrameOpenButton_Show(arrow, kind, parent)
+			MultiCastFlyoutFrameOpenButton_Show(arrow, "slot", parent)
 			arrow:Click()
 		end
 	end
